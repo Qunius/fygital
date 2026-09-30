@@ -96,7 +96,6 @@
     logoTravel.finished.then(() => {
       if (run === entranceRun) { headerMark.style.opacity = '1'; intro.hidden = true; }
     }).catch(() => {});
-    animate(document.querySelector('.studio-label'), [{ opacity: 0 }, { opacity: 1 }], 1000, 2950);
     animate(document.querySelector('.countdown-title'), [
       { opacity: 0, transform: 'translateY(14px)' },
       { opacity: 1, transform: 'translateY(0)' }
@@ -113,8 +112,7 @@
         { opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'translateY(0)' }
       ], 1000, 3600 + i * 100);
     });
-    const last = animate(document.querySelector('footer'), [{ opacity: 0 }, { opacity: 1 }], 1100, 4100);
-    try { await last.finished; } catch { return; }
+    try { await Promise.all(entranceAnimations.map(animation => animation.finished)); } catch { return; }
     if (run === entranceRun) { headerMark.style.opacity = ''; settle(); }
   }
 
@@ -158,13 +156,14 @@
 
   function updateClock() {
     const values = remainingTime(Date.now());
-    const [years, days, hours, minutes, seconds] = values;
     units.forEach((unit, i) => {
       const digits = [...unit.querySelectorAll('.digit')];
       const value = String(values[i]).padStart(digits.length, '0');
       digits.forEach((digit, j) => displayDigit(digit, value[j], !reducedQuery.matches && !document.hidden && !entering));
     });
-    timer.setAttribute('aria-label', `${years} år, ${days} dagar, ${hours} timmar, ${minutes} minuter och ${seconds} sekunder till studion öppnar`);
+    const labels = ['year', 'day', 'hour', 'minute', 'second'];
+    const remaining = values.map((value, index) => `${value} ${labels[index]}${value === 1 ? '' : 's'}`);
+    timer.setAttribute('aria-label', `${remaining.join(', ')} until opening`);
   }
 
   window.addEventListener('pointermove', (event) => {
