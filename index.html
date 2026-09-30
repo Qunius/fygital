@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#141310">
+  <title>Fygital — nedräkning</title>
+  <meta name="description" content="En kreativ studio för människor, rum och teknik.">
+  <link rel="preload" href="assets/Michroma-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="style.css?v=3">
+  <script src="animation.js?v=3" defer></script>
+</head>
+<body class="is-entering">
+  <div class="room" aria-hidden="true">
+    <div class="room-camera">
+      <div class="room-panels"></div>
+    </div>
+    <div class="room-shade"></div>
+  </div>
+  <div class="intro" aria-hidden="true"><img class="intro-mark" src="assets/wordmark.svg" alt=""></div>
+  <div class="page">
+    <header>
+      <img class="wordmark" src="assets/wordmark.svg" alt="Fygital" width="324" height="38">
+      <p class="studio-label">Kreativ studio</p>
+    </header>
+    <main>
+      <h1 class="countdown-title">Studion öppnar om</h1>
+      <div class="countdown" role="timer" aria-live="off" aria-label="Nedräkning till studion öppnar">
+        <div class="unit" data-unit="years"><div class="number" aria-hidden="true">06</div><span class="unit-label">år</span></div>
+        <div class="unit" data-unit="days"><div class="number" aria-hidden="true">000</div><span class="unit-label">dagar</span></div>
+        <div class="unit" data-unit="hours"><div class="number" aria-hidden="true">00</div><span class="unit-label">timmar</span></div>
+        <div class="unit" data-unit="minutes"><div class="number" aria-hidden="true">00</div><span class="unit-label">minuter</span></div>
+        <div class="unit" data-unit="seconds"><div class="number" aria-hidden="true">00</div><span class="unit-label">sekunder</span></div>
+      </div>
+    </main>
+    <footer>
+      <a class="portfolio-link" href="https://pavelli.fygital.se/" target="_blank" rel="noopener noreferrer" aria-label="Pavel Lis portfolio, öppnas i ny flik">Portfolio</a>
+    </footer>
+  </div>
+  <noscript><style>.intro{display:none}.room-panels{background:url(assets/room.png) center/cover}.wordmark,.studio-label,.countdown-title,.unit,.unit-label,footer{opacity:1!important;transform:none!important}</style></noscript>
+</body>
+</html>
